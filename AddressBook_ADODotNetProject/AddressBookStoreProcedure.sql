@@ -20,3 +20,8 @@ VALUES
 
 END
 
+CREATE PROCEDURE SpGetAllDataFromDB
+AS BEGIN
+SELECT * FROM AddressBook_Table
+END
+
