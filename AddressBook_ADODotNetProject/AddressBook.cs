@@ -94,5 +94,29 @@ namespace AddressBook_ADODotNet
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void UpdateSpecificData(AddressBookModel addressBookModel)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            using (sqlConnection)
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand("SpUpdateSpecificData", sqlConnection);
+
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@FirstName", addressBookModel.FirstName);
+                sqlCommand.Parameters.AddWithValue("@LastName", addressBookModel.LastName);
+
+                int result = sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                if (result >= 1)
+                    Console.WriteLine("Sucsesfully Updated data");
+                else
+                    Console.WriteLine("Data not found for Update");
+            }
+        }
     }
 }

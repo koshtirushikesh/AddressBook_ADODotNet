@@ -10,8 +10,8 @@ namespace AddressBook_ADODotNet
 
             AddressBookModel addressBookModel = new AddressBookModel()
             {
-                FirstName = "rushi",
-                LastName = "KOshti",
+                FirstName = "Ram",
+                LastName = "Km",
                 Address = "3/5 room no",
                 City = "Mumbai",
                 State = "MH",
@@ -20,13 +20,20 @@ namespace AddressBook_ADODotNet
                 Email = "rushi.koshti2@gmail.com"
             };
 
+            AddressBookModel addressUpdate = new AddressBookModel
+            {
+                FirstName = "Shubham",
+                LastName = "Km"
+            };
+
             AddressBook addressBook = new AddressBook();
 
             bool flag = true;
             while (flag)
             {
                 Console.WriteLine("\n1. Create Contact" +
-                    "\n2. Get All Data From Data Base");
+                    "\n2. Get All Data From Data Base" +
+                     "\n3. Update the Data From Data Base");
                 Console.WriteLine("3. Exit the program");
 
                 Console.Write("\nEnter option: ");
@@ -37,7 +44,8 @@ namespace AddressBook_ADODotNet
                 {
                     case 1: addressBook.AddNewContactInDataBase(addressBookModel); break;
                     case 2: addressBook.GetAllDataFromDataBase();break;
-                    case 3: flag = false; break;
+                    case 3: addressBook.UpdateSpecificData(addressUpdate);break;
+                    case 5: flag = false; break;
                 }
                 Console.ReadLine();
             }
