@@ -33,8 +33,9 @@ namespace AddressBook_ADODotNet
             {
                 Console.WriteLine("\n1. Create Contact" +
                     "\n2. Get All Data From Data Base" +
-                     "\n3. Update the Data From Data Base");
-                Console.WriteLine("3. Exit the program");
+                     "\n3. Update the Data From Data Base" +
+                     "\n4. Delete the Data From Data Base");
+                Console.WriteLine("5. Exit the program");
 
                 Console.Write("\nEnter option: ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -43,8 +44,9 @@ namespace AddressBook_ADODotNet
                 switch (option)
                 {
                     case 1: addressBook.AddNewContactInDataBase(addressBookModel); break;
-                    case 2: addressBook.GetAllDataFromDataBase();break;
-                    case 3: addressBook.UpdateSpecificData(addressUpdate);break;
+                    case 2: addressBook.GetAllDataFromDataBase(); break;
+                    case 3: addressBook.UpdateSpecificData(addressUpdate); break;
+                    case 4: addressBook.DeleteTheSpacificData("Ram", "Km"); break;
                     case 5: flag = false; break;
                 }
                 Console.ReadLine();

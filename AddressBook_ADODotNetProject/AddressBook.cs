@@ -118,5 +118,29 @@ namespace AddressBook_ADODotNet
                     Console.WriteLine("Data not found for Update");
             }
         }
+
+        public void DeleteTheSpacificData(string firstName, string lastName)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            using (sqlConnection)
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand("SpDeleteSpecificData", sqlConnection);
+
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@FirstName", firstName);
+                sqlCommand.Parameters.AddWithValue("@LastName", lastName);
+
+                int result = sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                if (result >= 1)
+                    Console.WriteLine("Sucsesfully deleted data");
+                else
+                    Console.WriteLine("Data not found for deleat");
+            }
+        }
     }
 }

@@ -34,3 +34,12 @@ CREATE PROCEDURE SpUpdateSpecificData
 AS BEGIN
 UPDATE AddressBook_Table SET FirstName = @FirstName WHERE LastName = @LastName;
 END
+
+ALTER PROCEDURE SpDeleteSpecificData
+(        
+@FirstName VARCHAR(30),
+@LastName VARCHAR(30)
+)
+AS BEGIN
+DELETE FROM AddressBook_Table WHERE FirstName = @FirstName AND LastName = @LastName;
+END
